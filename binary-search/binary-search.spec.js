@@ -1,14 +1,14 @@
 'use strict';
-const {expect} = require('chai');
+const { expect } = require('chai');
 const binarySearch = require('./binary-search');
 
-const test1 = [1,3,4,5,10,15,20,22,23,98,1000];
-const test2 = [-3,-2,0, 9, 10, 11, 12, 15, 17, 18, 19, 20];
+const test1 = [1, 3, 4, 5, 10, 15, 20, 22, 23, 98, 1000];
+const test2 = [-3, -2, 0, 9, 10, 11, 12, 15, 17, 18, 19, 20];
 const test3 = [-0.5, 0.03, 2.6, 3, 3.5, 3.777777, 5];
 
 
 describe('Binary Search', () => {
-	it('returns true if target value is in array', () =>{
+	it('returns true if target value is in array', () => {
 		expect(binarySearch(test1, 10)).to.equal(true);
 		expect(binarySearch(test2, -3)).to.equal(true);
 		expect(binarySearch(test2, 20)).to.equal(true);
@@ -21,5 +21,14 @@ describe('Binary Search', () => {
 	});
 
 	//(OPTIONAL) WRITE YOUR OWN TESTS HERE. Include >=1 edge case :)
+	it('can handle a zero element array', () => {
+		expect(binarySearch([], 1)).to.equal(false);
+	})
+	it('can handle a single element array when it contains the element', () => {
+		expect(binarySearch([1], 1)).to.equal(true);
+	})
+	it('can handle a single element array when it does not contain the element', () => {
+		expect(binarySearch([1], 0)).to.equal(false);
+	})
 
 });
